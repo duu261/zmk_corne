@@ -32,6 +32,15 @@
             #binding-cells = <0>;
             bindings = <&kp LEFT_SHIFT>, <&kp CAPS>;
         };
+
+        td1: td1 {
+            compatible = "zmk,behavior-tap-dance";
+            display-name = "Shift/Caps Lock Tap Dance";
+            #binding-cells = <0>;
+            bindings = <&kp LCTRL>, <&kp LEFT_GUI>;
+
+            label = "LCTRL/LGUI";
+        };
     };
 
     rgb_encoder: rgb_encoder {
@@ -63,10 +72,10 @@
         default_layer {
             display-name = "Duu";
             bindings = <
-&kp TAB    &kp Q  &kp W  &kp E     &kp R  &kp T                                &kp UP                &kp Y        &kp U  &kp I      &kp O    &kp P     &kp BSPC
-&td0       &kp A  &kp S  &kp D     &kp F  &kp G                      &kp LEFT  &kp ENTER  &kp RIGHT  &kp H        &kp J  &kp K      &kp L    &kp SEMI  &kp SQT
-&kp LCTRL  &kp Z  &kp X  &kp C     &kp V  &kp B        &kp C_MUTE              &kp DOWN              &kp N        &kp M  &kp COMMA  &kp DOT  &kp FSLH  &kp ESC
-                         &kp LGUI  &mo 1  &lt 3 SPACE                                                &lt 3 ENTER  &mo 2  &kp RALT
+&kp TAB       &kp Q  &kp W  &kp E  &kp R        &kp T                              &kp UP                &kp Y            &kp U        &kp I            &kp O    &kp P     &kp DEL
+&kp LEFT_ALT  &kp A  &kp S  &kp D  &kp F        &kp G                    &kp LEFT  &kp ENTER  &kp RIGHT  &kp H            &kp J        &kp K            &kp L    &kp SEMI  &kp SQT
+&td0          &kp Z  &kp X  &kp C  &kp V        &kp B      &kp C_MUTE              &kp DOWN              &kp N            &kp M        &kp COMMA        &kp DOT  &kp FSLH  &kp RIGHT_ALT
+                            &td1   &lt 3 SPACE  &lt 1 TAB                                                &lt 2 BACKSPACE  &lt 3 ENTER  &kp RIGHT_SHIFT
             >;
 
             sensor-bindings = <&inc_dec_kp C_VOLUME_UP C_VOLUME_DOWN>;
@@ -81,7 +90,7 @@
                                          &trans        &trans        &trans                                                                          &kp INS          &kp DEL          &trans
             >;
 
-            sensor-bindings = <&inc_dec_kp PAGE_UP PAGE_DOWN>;
+            sensor-bindings = <&scroll_encoder>;
         };
 
         raise_layer {
@@ -90,7 +99,7 @@
 &trans  &kp EXCL      &kp AT        &kp HASH   &kp DLLR   &kp PRCNT                            &mmv MOVE_UP                     &kp CARET  &kp AMPS   &kp ASTRK  &kp LPAR  &kp RPAR  &kp BSPC
 &trans  &bt BT_CLR    &mkp LCLK     &mkp MCLK  &mkp RCLK  &mkp MB4             &mmv MOVE_LEFT  &mkp LCLK       &mmv MOVE_RIGHT  &kp MINUS  &kp EQUAL  &kp LBKT   &kp RBKT  &kp BSLH  &kp GRAVE
 &trans  &out OUT_USB  &out OUT_BLE  &none      &none      &mkp MB5   &trans                    &mmv MOVE_DOWN                   &kp UNDER  &kp PLUS   &kp LBRC   &kp RBRC  &kp PIPE  &kp TILDE
-                                    &trans     &trans     &kp SPACE                                                             &kp RET    &trans     &trans
+                                    &trans     &kp SPACE  &trans                                                                &trans     &kp ENTER  &trans
             >;
 
             sensor-bindings = <&inc_dec_kp C_BRI_UP C_BRI_DEC>;
@@ -105,7 +114,7 @@
                                        &trans       &trans     &trans                                                                   &trans       &trans     &trans
             >;
 
-            sensor-bindings = <&inc_dec_kp C_AC_ZOOM_IN C_AC_ZOOM_OUT>;
+            sensor-bindings = <&rgb_encoder>;
         };
     };
 };
