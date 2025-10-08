@@ -1,6 +1,6 @@
 layout: {zmk_keyboard: eyelash_corne}
 layers:
-  Duu:
+  BASE:
   - $$mdi:apple-keyboard-option$$
   - Q
   - W
